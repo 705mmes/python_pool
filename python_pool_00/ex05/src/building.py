@@ -58,7 +58,7 @@ def decimal(string):
 def punctuation(string):
     """ Counts punctuations in string """
     res = 0
-    for i, char in enumerate(string):
+    for char in enumerate(string):
         if char.isascii():
             res += 1
         if char.isdecimal():
