@@ -15,6 +15,7 @@ $(VENV)/bin/activate: requirements.txt
 	$(PIP) install -r requirements.txt
 
 install: $(VENV)/bin/activate
+		python3 -m build
 
 $(TESTS_DIR):
 	mkdir -p $(TESTS_DIR)
@@ -33,6 +34,7 @@ clean:
 
 fclean: clean
 		rm -rf $(TESTS_DIR)
+		rm -rf ./dist ./ft_package.egg-info
 
 run: $(VENV)/bin/activate
 	$(PYTHON) $(SRC)/test.py $(ARGS)
