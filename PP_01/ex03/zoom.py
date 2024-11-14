@@ -6,10 +6,8 @@ import matplotlib.pyplot as plt
 # from scipy.ndimage import zoom, rotate
 
 
-def ft_zoom(img, zoom_factor=2, x=(400, 900), y=(0, 500)):
-    """
-    OUBLI AP
-    """
+def ft_zoom(img, x=(400, 900), y=(0, 500)):
+    """zooms on an image"""
     sliced_img = img[y[0]:y[1], x[0]:x[1]]
 
     fig, ax = plt.subplots(figsize=(8, 8))

@@ -6,6 +6,7 @@ import numpy as np
 
 
 def slice_me(family: list, start: int, end: int) -> list:
+    """slices a list and prints its shape"""
     try:
         assert isinstance(family, list), "`family` is not a list."
         assert all(isinstance(sublist, list) for sublist in family), \

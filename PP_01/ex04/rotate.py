@@ -18,9 +18,7 @@ def render_img(img, name):
 
 
 def ft_rotate(img, x=(400, 900), y=(0, 500)):
-    """
-    OUBLI AP
-    """
+    """rotates an image"""
     sliced_img = img[y[0]:y[1], x[0]:x[1]]
 
     print("The shape of the image is:", sliced_img.shape)
@@ -37,7 +35,7 @@ def ft_rotate(img, x=(400, 900), y=(0, 500)):
     ax.set_ylabel('Y-axis (pixels)')
     ax.set_title("Rotated image")
 
-    print("New shape after Transpose:", rotated_img.shape)
+    print("New shape after rotating:", rotated_img.shape)
 
     plt.show()
 

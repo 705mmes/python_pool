@@ -2,7 +2,7 @@
 
 # Variables
 VENV := .venv
-PYTHON := $(VENV)/bin/python
+PYTHON := $(VENV)/bin/python3.10
 PIP := $(VENV)/bin/pip
 TESTS_DIR := tests
 ARGS ?=
@@ -11,11 +11,10 @@ SRC := .
 all: install lint test
 
 $(VENV)/bin/activate: requirements.txt
-	python3 -m venv $(VENV)
+	python3.10 -m venv $(VENV)
 	$(PIP) install -r requirements.txt
 
 install: $(VENV)/bin/activate
-		python3 -m build
 
 $(TESTS_DIR):
 	mkdir -p $(TESTS_DIR)
@@ -34,7 +33,6 @@ clean:
 
 fclean: clean
 		rm -rf $(TESTS_DIR)
-		rm -rf ./dist ./ft_package.egg-info
 
 run: $(VENV)/bin/activate
 	$(PYTHON) $(SRC)/test.py $(ARGS)

@@ -4,6 +4,7 @@
 
 
 def give_bmi(h: list[int | float], w: list[int | float]) -> list[float]:
+    """gives user's bmi"""
     if len(h) != len(w):
         raise ValueError("Heights and weights lists sizes must be equal")
     results = []
@@ -18,6 +19,7 @@ def give_bmi(h: list[int | float], w: list[int | float]) -> list[float]:
 
 
 def apply_limit(bmi: list[int | float], limit: int) -> list[bool]:
+    """creates array of values over the limit"""
     results = []
     for value in bmi:
         results.append(value >= limit)

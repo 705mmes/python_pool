@@ -7,21 +7,30 @@ high-level commands and classes for manipulating and visualizing data."""
 
 
 import numpy as np
-import os
 import cv2
 from zoom import ft_zoom
 
 
-def ft_load(path: str) -> np.ndarray:
-    try:
-        if not os.path.exists(path):
-            raise AssertionError(f"Error: The file '{path}' does not exist.")
-        if not path.lower().endswith(('.jpg', '.jpeg')):
-            raise AssertionError("Error: Wrong file extension.\
-                                 Please provide a .jpg or .jpeg file.")
-        if os.path.getsize(path) == 0:
-            raise AssertionError("Error: The file is empty.")
+def check_file(path):
+    """checks if file is valid"""
+    # Basic check for filename extension
+    if not (path.endswith('.jpg') or path.endswith('.jpeg')):
+        raise AssertionError("Error: wrong file extension")
 
+    # Try opening the file to check if it has any content
+    try:
+        with open(path, 'rb') as file:
+            content = file.read(1)
+            if not content:
+                raise AssertionError(f"Error: The file '{path}' is empty.")
+    except FileNotFoundError:
+        raise AssertionError(f"Error: The file '{path}' does not exist.")
+
+
+def ft_load(path: str) -> np.ndarray:
+    """loads and print images after zoom"""
+    try:
+        check_file(path)
         img = cv2.imread(path)
 
         if img is None:
@@ -42,6 +51,7 @@ def ft_load(path: str) -> np.ndarray:
 
 
 def render_img(img, name):
+    """renders images in a window"""
     print("Press ESC to quit")
     cv2.imshow(name, img)
     key = cv2.waitKey(0)  # Waits indefinitely until a key is pressed

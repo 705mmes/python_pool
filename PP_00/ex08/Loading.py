@@ -3,6 +3,7 @@
 
 
 def ft_tqdm(lst: range) -> None:
+    """prints a loading bar"""
     total = len(lst)
     for i in lst:
         percent = (i + 1) / total

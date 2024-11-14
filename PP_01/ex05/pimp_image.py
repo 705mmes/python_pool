@@ -11,6 +11,7 @@ import numpy as np
 
 
 def render_img(array, name):
+    """render image in a window"""
     print("Press ESC to quit")
     cv2.imshow(name, array)
     key = cv2.waitKey(0)
@@ -21,6 +22,7 @@ def render_img(array, name):
 
 
 def ft_green(array) -> np.ndarray:
+    """applies green filter to image"""
     green_overlay = np.full(array.shape, (0, 255, 0), dtype=np.uint8)
     result = cv2.addWeighted(green_overlay, 0.5, array, 1 - 0.5, 0)
 
@@ -30,6 +32,7 @@ def ft_green(array) -> np.ndarray:
 
 
 def ft_red(array) -> np.ndarray:
+    """applies red filter to image"""
     red_overlay = np.full(array.shape, (0, 0, 255), dtype=np.uint8)
     result = cv2.addWeighted(red_overlay, 0.5, array, 1 - 0.5, 0)
 
@@ -39,6 +42,7 @@ def ft_red(array) -> np.ndarray:
 
 
 def ft_blue(array) -> np.ndarray:
+    """applies blue filter to image"""
     blue_overlay = np.full(array.shape, (255, 0, 0), dtype=np.uint8)
     result = cv2.addWeighted(blue_overlay, 0.5, array, 1 - 0.5, 0)
 
@@ -48,6 +52,7 @@ def ft_blue(array) -> np.ndarray:
 
 
 def ft_grey(array) -> np.ndarray:
+    """applies grey filter to image"""
     gray = cv2.cvtColor(array, cv2.COLOR_BGR2GRAY)
     gray_bgr = cv2.cvtColor(gray, cv2.COLOR_GRAY2BGR)
 
@@ -56,6 +61,7 @@ def ft_grey(array) -> np.ndarray:
 
 
 def ft_invert(array) -> np.ndarray:
+    """applies inverted filter to image"""
     inverted = cv2.bitwise_not(array)
 
     render_img(inverted, "Inverted Filter")

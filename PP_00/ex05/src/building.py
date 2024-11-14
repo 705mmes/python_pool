@@ -16,7 +16,7 @@ def count_tha_shit_up(string):
 def upper_cases(string):
     """ Counts uppercases in string """
     res = 0
-    for i, char in enumerate(string):
+    for char in string:
         if char.isupper():
             res += 1
     print(res, "upper letters")
@@ -26,7 +26,7 @@ def upper_cases(string):
 def lower_cases(string):
     """ Counts lowercases in string """
     res = 0
-    for i, char in enumerate(string):
+    for char in string:
         if char.isalpha():
             res += 1
         if char.isupper():
@@ -38,7 +38,7 @@ def lower_cases(string):
 def spaces(string):
     """ Counts spaces in string """
     res = 0
-    for i, char in enumerate(string):
+    for char in string:
         if char.isspace():
             res += 1
     print(res, "spaces")
@@ -48,7 +48,7 @@ def spaces(string):
 def decimal(string):
     """ Counts digits in string """
     res = 0
-    for i, char in enumerate(string):
+    for char in string:
         if char.isdecimal():
             res += 1
     print(res, "digits")
@@ -58,15 +58,9 @@ def decimal(string):
 def punctuation(string):
     """ Counts punctuations in string """
     res = 0
-    for char in enumerate(string):
-        if char.isascii():
+    for char in string:
+        if char.isascii() and not (char.isdecimal() or char.isalpha() or char.isspace()):
             res += 1
-        if char.isdecimal():
-            res -= 1
-        if char.isalpha():
-            res -= 1
-        if char.isspace():
-            res -= 1
     print(res, "punctuation marks")
     return res
 
@@ -75,6 +69,7 @@ def main():
     assert len(sys.argv) <= 2, "Too much arguments"
     if len(sys.argv) < 2:
         string = input("What is the text to count?\n")
+        print("The text contains", len(string), "characters:")
         count_tha_shit_up(string)
     else:
         count_tha_shit_up(sys.argv[1])
